@@ -22,7 +22,8 @@ RUN apt-get update -y --fix-missing\
 # UTF-8
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 ENV LANG en_US.utf8
-
+RUN apt-get -y -q install libgstreamer1.0-0 gstreamer1.0-dev gstreamer1.0-tools gstreamer1.0-doc gstreamer1.0-plugins-base gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav
 ##### TensorFlow
 
 # Install system packages
@@ -165,5 +166,3 @@ RUN mkdir -p /usr/local/src/opencv /usr/local/src/opencv_contrib \
   && ldconfig
 
 CMD bash
-
-LABEL "Author"="Data Machines Corp <help@datamachines.io>"
